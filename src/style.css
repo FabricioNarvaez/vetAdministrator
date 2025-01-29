@@ -60,3 +60,16 @@ h1 {
 .button:hover {
     background-color: var(--purple-hover);
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
