@@ -7,27 +7,27 @@
             <form @submit.prevent="submitForm">
                 <div class="field">
                     <label for="name">Nombre Mascota</label>
-                    <input v-model="patient.name"
+                    <input @input="$emit('update:name', $event.target.value)" :value="name"
                     type="text" id="name" placeholder="Nombre de la mascota" />
                 </div>
                 <div class="field">
                     <label for="ownerName">Nombre Propietario/a</label>
-                    <input v-model="patient.ownerName"
+                    <input @input="$emit('update:owner-name', $event.target.value)" :value="ownerName"
                     type="text" id="ownerName" placeholder="Nombre de el/la propietario/a" />
                 </div>
                 <div class="field">
                     <label for="email">Email de contacto</label>
-                    <input v-model="patient.email"
+                    <input @input="$emit('update:email', $event.target.value)" :value="email"
                     type="email" id="email" placeholder="Email" />
                 </div>
                 <div class="field">
                     <label for="admissionDate">Fecha de Alta</label>
-                    <input v-model="patient.admissionDate"
+                    <input @input="$emit('update:admission-date', $event.target.value)" :value="admissionDate"
                     type="date" id="admissionDate" />
                 </div>
                 <div class="field">
                     <label for="symptoms">Síntomas</label>
-                    <textarea v-model="patient.symptoms"
+                    <textarea @input="$emit('update:symptoms', $event.target.value)" :value="symptoms"
                     id="symptoms" placeholder="Describe los síntomas..."/>
                 </div>
     
@@ -40,22 +40,23 @@
 <script setup>
     import { reactive } from 'vue';
     import Alert from './Alert.vue';
+    
+    const props = defineProps({
+        name: String,
+        ownerName: String,
+        email: String,
+        admissionDate: String,
+        symptoms: String
+    })
+    defineEmits(['update:name', 'update:owner-name', 'update:email', 'update:admission-date', 'update:symptoms']);
 
     const alert = reactive({
         message: '',
         type: ''
     });
 
-    const patient = reactive({
-        name: '',
-        ownerName: '',
-        email: '',
-        admissionDate: '',
-        symptoms: ''
-    });
-
     const submitForm = () => {
-        if(Object.values(patient).includes('')){
+        if(Object.values(props).includes('')){
             alert.message = 'Todos los campos son obligatorios';
             alert.type = 'error';
         }else{
@@ -63,6 +64,7 @@
             alert.type = 'success';
         }
     }
+
 </script>
 
 <style>
