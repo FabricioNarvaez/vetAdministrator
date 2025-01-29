@@ -28,6 +28,13 @@ input[type="date"]::-webkit-datetime-edit {
     opacity: 1;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 1;
+    cursor: pointer;
+}
+
+
 .field textarea,
 .field input {
     font-family: Arial, Helvetica, sans-serif;
