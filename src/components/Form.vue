@@ -1,8 +1,9 @@
 <template>
     <div class="form">
         <h2>Crear Seguimiento</h2>
-        <form>
-            <p>{{ patient.name }}</p>
+
+        <Alert v-if="alert.message" :alert="alert" />
+        <form @submit.prevent="submitForm">
             <div class="field">
                 <label for="name">Nombre Mascota</label>
                 <input v-model="patient.name"
@@ -36,6 +37,12 @@
 
 <script setup>
     import { reactive } from 'vue';
+    import Alert from './Alert.vue';
+
+    const alert = reactive({
+        message: '',
+        type: ''
+    });
 
     const patient = reactive({
         name: '',
@@ -44,6 +51,16 @@
         admissionDate: '',
         symptoms: ''
     });
+
+    const submitForm = () => {
+        if(Object.values(patient).includes('')){
+            alert.message = 'Todos los campos son obligatorios';
+            alert.type = 'error';
+        }else{
+            alert.message = 'Paciente registrado correctamente';
+            alert.type = 'success';
+        }
+    }
 </script>
 
 <style>
