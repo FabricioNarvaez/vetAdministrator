@@ -12,6 +12,10 @@
 
     --purple: #7a6be4;
     --purple-hover: #5f4bd1;
+    --blue: #007bff;
+    --blue-hover: #0056b3;
+    --red: #dc3545;
+    --red-hover: #bd2130;
 }
 
 * {

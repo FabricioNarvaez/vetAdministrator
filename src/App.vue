@@ -7,7 +7,7 @@
         v-model:admission-date="patient.admissionDate"
         v-model:symptoms="patient.symptoms"
     />
-    <PatientList />
+    <PatientList :patients="patients" />
 </template>
 
 <script setup>
@@ -31,6 +31,3 @@
         patients.value.push({...patient});
     }
 </script>
-
-<style>
-</style>

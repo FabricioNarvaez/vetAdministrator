@@ -1,0 +1,29 @@
+.listCard {
+    text-align: left;
+}
+
+.listCard span {
+    color: black;
+}
+
+.listCardActions {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.editButton {
+    background-color: var(--blue);
+}
+
+.editButton:hover {
+    background-color: var(--blue-hover);
+}
+
+.deleteButton {
+    background-color: var(--red);
+}
+
+.deleteButton:hover {
+    background-color: var(--red-hover);
+}
