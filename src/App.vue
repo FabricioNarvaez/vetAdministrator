@@ -1,6 +1,6 @@
 <template>
     <Header />
-    <Form 
+    <Form @addPatient="addPatient"
         v-model:name="patient.name"
         v-model:owner-name="patient.ownerName"
         v-model:email="patient.email"
@@ -26,6 +26,10 @@
         admissionDate: '',
         symptoms: ''
     });
+
+    const addPatient = () => {
+        patients.value.push({...patient});
+    }
 </script>
 
 <style>

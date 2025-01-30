@@ -48,7 +48,7 @@
         admissionDate: String,
         symptoms: String
     })
-    defineEmits(['update:name', 'update:owner-name', 'update:email', 'update:admission-date', 'update:symptoms']);
+    const emit = defineEmits(['addPatient', 'update:name', 'update:owner-name', 'update:email', 'update:admission-date', 'update:symptoms']);
 
     const alert = reactive({
         message: '',
@@ -62,6 +62,7 @@
         }else{
             alert.message = 'Paciente registrado correctamente';
             alert.type = 'success';
+            emit('addPatient');
         }
     }
 
