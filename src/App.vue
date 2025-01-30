@@ -6,6 +6,7 @@
         v-model:email="patient.email"
         v-model:admission-date="patient.admissionDate"
         v-model:symptoms="patient.symptoms"
+        :id="patient.id"
     />
     <PatientList :patients="patients" @editPatient="editPatient" />
 </template>

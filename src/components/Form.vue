@@ -31,7 +31,7 @@
                     id="symptoms" placeholder="Describe los síntomas..."/>
                 </div>
     
-                <input type="submit" value="Registrar Paciente" class="button" />
+                <input type="submit" :value="id ? 'Actualizar Paciente' : 'Registrar Paciente'" class="button" />
             </form>
         </div>
     </div>
@@ -46,7 +46,8 @@
         ownerName: String,
         email: String,
         admissionDate: String,
-        symptoms: String
+        symptoms: String,
+        id: String
     })
     const emit = defineEmits(['addPatient', 'update:name', 'update:owner-name', 'update:email', 'update:admission-date', 'update:symptoms']);
 
