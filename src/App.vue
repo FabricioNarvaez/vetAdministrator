@@ -16,7 +16,7 @@
     import Form from '@components/Form.vue';
     import PatientList from '@components/PatientList.vue';
 
-    import { ref, reactive } from 'vue';
+    import { ref, reactive, watch, onMounted } from 'vue';
     import { uid } from 'uid';
 
     const patients = ref([]);
@@ -55,4 +55,15 @@
     const deletePatient = (patientToDelete) => {
         patients.value = patients.value.filter(patientItem => patientItem.id !== patientToDelete.id);
     };
+
+    onMounted(() =>{
+        const patientsFromLocalStorage = JSON.parse(localStorage.getItem('patients'));
+        if(patientsFromLocalStorage){
+            patients.value = patientsFromLocalStorage;
+        }
+    });
+
+    watch(patients, (newPatients) => {
+        localStorage.setItem('patients', JSON.stringify(newPatients));
+    }, { deep: true });
 </script>
