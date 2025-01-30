@@ -13,7 +13,7 @@
             <p>Fecha Alta: <span>{{ patient.admissionDate}}</span></p>
             <p>Síntomas: <span>{{ patient.symptoms}}</span></p>
             <div class="listCardActions">
-                <button class="button editButton">Editar</button>
+                <button @click="$emit('editPatient', patient)" class="button editButton">Editar</button>
                 <button class="button deleteButton">Eliminar</button>
             </div>
         </div>
@@ -27,6 +27,7 @@
             required: true
         }
     })
+    defineEmits(['editPatient']);
 </script>
 
 <style>

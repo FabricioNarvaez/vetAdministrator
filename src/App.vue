@@ -7,7 +7,7 @@
         v-model:admission-date="patient.admissionDate"
         v-model:symptoms="patient.symptoms"
     />
-    <PatientList :patients="patients" />
+    <PatientList :patients="patients" @editPatient="editPatient" />
 </template>
 
 <script setup>
@@ -30,13 +30,24 @@
     });
 
     const addPatient = () => {
-        patients.value.push({...patient, id: uid()});
+        if(patient.id){
+            const index = patients.value.findIndex(patientItem => patientItem.id === patient.id);
+            patients.value[index] = {...patient};
+        }else{
+            patients.value.push({...patient, id: uid()});
+        }
+
         Object.assign(patient, {
-            name: '',
-            ownerName: '',
-            email: '',
-            admissionDate: '',
-            symptoms: ''
-        });
-    }
+                id: null,
+                name: '',
+                ownerName: '',
+                email: '',
+                admissionDate: '',
+                symptoms: ''
+            });
+    };
+
+    const editPatient = (patientToEdit) => {
+        Object.assign(patient, patientToEdit);
+    };
 </script>
