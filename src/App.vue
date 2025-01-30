@@ -8,7 +8,7 @@
         v-model:symptoms="patient.symptoms"
         :id="patient.id"
     />
-    <PatientList :patients="patients" @editPatient="editPatient" />
+    <PatientList :patients="patients" @editPatient="editPatient" @deletePatient="deletePatient"/>
 </template>
 
 <script setup>
@@ -50,5 +50,9 @@
 
     const editPatient = (patientToEdit) => {
         Object.assign(patient, patientToEdit);
+    };
+
+    const deletePatient = (patientToDelete) => {
+        patients.value = patients.value.filter(patientItem => patientItem.id !== patientToDelete.id);
     };
 </script>

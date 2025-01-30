@@ -14,7 +14,7 @@
             <p>Síntomas: <span>{{ patient.symptoms}}</span></p>
             <div class="listCardActions">
                 <button @click="$emit('editPatient', patient)" class="button editButton">Editar</button>
-                <button class="button deleteButton">Eliminar</button>
+                <button @click="$emit('deletePatient', patient)" class="button deleteButton">Eliminar</button>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             required: true
         }
     })
-    defineEmits(['editPatient']);
+    defineEmits(['editPatient', 'deletePatient']);
 </script>
 
 <style>
