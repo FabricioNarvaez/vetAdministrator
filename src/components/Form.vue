@@ -23,7 +23,7 @@
                 <div class="field">
                     <label for="admissionDate">Fecha de Alta</label>
                     <input @input="$emit('update:admission-date', $event.target.value)" :value="admissionDate"
-                    type="date" id="admissionDate" />
+                    type="date" id="admissionDate" :min="today"/>
                 </div>
                 <div class="field">
                     <label for="symptoms">Síntomas</label>
@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-    import { reactive } from 'vue';
+    import { reactive, computed, watch } from 'vue';
     import Alert from './Alert.vue';
     
     const props = defineProps({
@@ -48,7 +48,8 @@
         admissionDate: String,
         symptoms: String,
         id: String
-    })
+    });
+
     const emit = defineEmits(['addPatient', 'update:name', 'update:owner-name', 'update:email', 'update:admission-date', 'update:symptoms']);
 
     const alert = reactive({
@@ -56,16 +57,24 @@
         type: ''
     });
 
+    const today = computed(() => new Date().toISOString().split('T')[0]);
+
     const submitForm = () => {
         if(Object.values(props).includes('')){
             alert.message = 'Todos los campos son obligatorios';
             alert.type = 'error';
-        }else{
-            alert.message = 'Paciente registrado correctamente';
+        }else {
+            alert.message = `Paciente ${props.id ? 'actualizado' : 'registrado'} correctamente`;
             alert.type = 'success';
             emit('addPatient');
         }
-    }
+    };
+
+    watch(alert, () => {
+        setTimeout(() => {
+            alert.message = '';
+        }, 3000);
+    });
 
 </script>
 
