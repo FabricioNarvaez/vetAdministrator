@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <section>
         <h2>Crear Seguimiento</h2>
         <div class="card">
     
@@ -34,7 +34,7 @@
                 <input type="submit" :value="id ? 'Actualizar Paciente' : 'Registrar Paciente'" class="button" />
             </form>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>

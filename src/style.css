@@ -77,3 +77,17 @@ h1 {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+@media screen and (max-width: 850px) {
+    #app {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        width: auto;
+    }
+
+    section {
+        grid-column: 1/2;
+    }
+}

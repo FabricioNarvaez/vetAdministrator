@@ -1,5 +1,5 @@
 <template>
-    <Header />
+    <h1>Administrador Pacientes</h1>
     <Form @addPatient="addPatient"
         v-model:name="patient.name"
         v-model:owner-name="patient.ownerName"
@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-    import Header from '@components/Header.vue';
     import Form from '@components/Form.vue';
     import PatientList from '@components/PatientList.vue';
 

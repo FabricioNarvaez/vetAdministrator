@@ -1,5 +1,5 @@
 <template>
-    <div cla>
+    <section>
         <h2>Lista de Pacientes</h2>
         
         <div v-if="patients.length === 0" class="card">
@@ -17,7 +17,7 @@
                 <button @click="$emit('deletePatient', patient)" class="button deleteButton">Eliminar</button>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
