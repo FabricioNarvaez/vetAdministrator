@@ -6,6 +6,7 @@
             <p>No hay pacientes registrados</p>
         </div>
         <div v-else class="card listCard" v-for="patient in patients" :key="patient.name">
+            <p>ID: <span>{{ patient.id}}</span></p>
             <p>Nombre: <span>{{ patient.name}}</span></p>
             <p>Propietario: <span>{{ patient.ownerName}}</span></p>
             <p>Email: <span>{{ patient.email}}</span></p>

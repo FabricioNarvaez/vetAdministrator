@@ -16,10 +16,12 @@
     import PatientList from '@components/PatientList.vue';
 
     import { ref, reactive } from 'vue';
+    import { uid } from 'uid';
 
     const patients = ref([]);
 
     const patient = reactive({
+        id: null,
         name: '',
         ownerName: '',
         email: '',
@@ -28,6 +30,13 @@
     });
 
     const addPatient = () => {
-        patients.value.push({...patient});
+        patients.value.push({...patient, id: uid()});
+        Object.assign(patient, {
+            name: '',
+            ownerName: '',
+            email: '',
+            admissionDate: '',
+            symptoms: ''
+        });
     }
 </script>
